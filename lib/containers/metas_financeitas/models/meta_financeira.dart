@@ -1,10 +1,25 @@
-import 'dart:ffi';
-
 class MetaFinanceira {
+  int id;
   String? nome;
   String? descricao;
-  Double? valorMeta;
-  DateTime? prazo;
+  double valorMeta;
+  DateTime prazo;
 
-  MetaFinanceira({this.nome, this.descricao, this.valorMeta, this.prazo});
+  MetaFinanceira(
+      {required this.id,
+      this.nome,
+      this.descricao,
+      required this.valorMeta,
+      required this.prazo});
+}
+
+class DetalheMetaFinanceira {
+  int? idMeta;
+  String? tipoInvestimento;
+  double? taxaPreFixada;
+  String? taxaPos;
+  double? ultimoIndiceTaxaPos;
+  DateTime? dataInidiceTaxaPos;
+  DateTime? dataResgate;
+  double? valorAtual;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fade_shimmer/fade_shimmer.dart';
+import 'package:minhasmetasfinanceiras/containers/metas_financeitas/components/lista_meta_financeira.dart';
 import '../../metas_financeitas/components/formulario_meta_financeira.dart';
 
 class Home extends StatefulWidget {
@@ -12,9 +13,13 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<Home> {
-  bool isDarkMode = true;
+  bool isDarkMode = false;
   void _pushCreate() {
     Navigator.pushNamed(context, CadastroMetaFinanceira.route);
+  }
+
+  void _pushList() {
+    Navigator.pushNamed(context, ListaMetasFinanceiras.route);
   }
 
   @override
@@ -23,16 +28,11 @@ class _Home extends State<Home> {
       backgroundColor:
           isDarkMode ? const Color(0xff181818) : const Color(0xffF0F2F5),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.wb_sunny,
-          color: Colors.white.withOpacity(isDarkMode ? 0.5 : 1),
-        ),
-        onPressed: () {
-          setState(() {
-            isDarkMode = !isDarkMode;
-          });
-        },
-      ),
+          onPressed: _pushList,
+          child: Icon(
+            Icons.refresh,
+            color: Colors.white.withOpacity(isDarkMode ? 0.5 : 1),
+          )),
       appBar: AppBar(
         title: const Text('Minhas Metas Financeiras'),
         actions: [
@@ -88,7 +88,7 @@ class _Home extends State<Home> {
             ),
           );
         },
-        itemCount: 20,
+        itemCount: 3,
         separatorBuilder: (_, __) => const SizedBox(
           height: 16,
         ),
